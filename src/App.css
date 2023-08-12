@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap');
+::-webkit-scrollbar{
+  display: none;
+}
+
+body {
+    margin: 0; 
+    overflow-x: hidden; 
+  }
