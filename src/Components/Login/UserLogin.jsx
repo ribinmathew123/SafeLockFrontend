@@ -14,8 +14,8 @@ function UserLogin() {
   const onSubmit = async (data) => {
     try {
    
-      
       const response = await server.post("/api/v1/user-login", data); 
+
       if(response.data) {
         localStorage.setItem('userInfo', JSON.stringify(response.data))
         toast.success("Login success!.")
@@ -24,7 +24,7 @@ function UserLogin() {
     return response.data
     
     } catch (error) {
-      toast.error("Error during user signup:", error);
+      toast.error(error.response.data.error);
       
     }
   };
