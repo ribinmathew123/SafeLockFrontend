@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import server from "../../Axios/axios"
@@ -16,17 +15,13 @@ function UserSignup() {
         setShowPassword(!showPassword);
       };
 
-      // const onSubmit = async (data) => {
-      //   const { name, email, phoneNumber, password  } = data;
-      // }
+     
 
       const onSubmit = async (data) => {
         try {
-          alert(data)
-          console.log("usersignup",data)
+       
           
           const response = await server.post("/api/v1/user-signup", data); 
-          console.log(response.data); 
           if(response.data) {
             localStorage.setItem('userInfo', JSON.stringify(response.data))
             toast.success("Registration success!.")
@@ -39,23 +34,6 @@ function UserSignup() {
           
         }
       };
-
-
-    //   const onSubmit = async (userData) => {
-    //     const response = await axios.post('/signup',userData)
-    
-    //     if(response.data) {
-    //         localStorage.setItem('userData', JSON.stringify(userData))
-    //         message.success("Success! The OTP has been sent successfully.")
-    //     }
-    //     return response.data
-    // }
-    
-
-
-
-
-
 
 
     return (

@@ -13,11 +13,9 @@ function UserLogin() {
 
   const onSubmit = async (data) => {
     try {
-      alert(data)
-      console.log("usersignup",data)
+   
       
       const response = await server.post("/api/v1/user-login", data); 
-      console.log(response.data); 
       if(response.data) {
         localStorage.setItem('userInfo', JSON.stringify(response.data))
         toast.success("Login success!.")
@@ -33,13 +31,8 @@ function UserLogin() {
 
 
 
-
-
-
   return (
     <>
-
-
 <div className="flex items-center min-h-screen p-6 bg-gray-100 lg:justify-center">
       <div
         className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md"
