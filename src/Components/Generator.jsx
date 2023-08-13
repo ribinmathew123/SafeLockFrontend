@@ -139,7 +139,7 @@ function PasswordGenerator() {
     <>
       <Navbar />
       <div className="flex flex-col justify-center items-center bg-teal-900 min-h-screen ">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full sm:w-3/4 md:w-1/2 lg:w-1/2 xl:w-1/2 max-h-full overflow-y-auto mt-14">
+      <div className="bg-white p-6 rounded-lg shadow-md w-full sm:w-3/4 md:w-1/2 lg:w-1/2 xl:w-1/2 max-h-full overflow-y-auto  mt-14 ">
 
           <h1 className="text-2xl font-bold text-center mb-2">PASSWORD GENERATOR</h1>
           <div className="relative w-full">
@@ -148,7 +148,7 @@ function PasswordGenerator() {
               value={password}
               readOnly
               id="success"
-              className="w-full text-2xl font-semibold text-teal-900 p-2 pl-8 mb-4 border-2 border-teal-800 rounded-lg focus:ring focus:border-deep-orange-500"
+              className="w-full text-xl font-semibold text-teal-900 p-2 pl-8 mb-4 border-2 border-teal-800 rounded-lg focus:ring focus:border-deep-orange-500"
               placeholder="Success input"
             />
             <button
@@ -176,7 +176,7 @@ function PasswordGenerator() {
             className="w-full h-2 bg-teal-800 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 mb-4"
           />
 
-          <div className=" space-y-3">
+          <div className=" space-y-5">
 
             <div className="flex  items-center bg-teal-800 p-3 rounded-lg shadow-xl ">
               <label className="relative inline-flex items-center cursor-pointer ml-3">
@@ -218,7 +218,7 @@ function PasswordGenerator() {
 
 
 
-            <div className="flex items-center bg-teal-800 p-3 rounded-lg shadow-xl mt-9 ">
+            <div className="flex items-center bg-teal-800 p-3 rounded-lg shadow-xl mt-11 ">
               <label className="relative inline-flex items-center cursor-pointer ml-3">
                 <input type="checkbox" value="" onChange={handlecharactor} className="sr-only peer" />
 
@@ -232,21 +232,36 @@ function PasswordGenerator() {
 
 
           <div className="mt-4">
+       
             <button onClick={handilGenerate} className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white  font-bold rounded-md shadow-md">
-               GENERATE PASSWORD
+             <div className="flex justify-center gap-2">
+             <p className="font-serif text-xl">
+
+GENERATE PASSWORD
+</p>
+            <img
+          src="https://res.cloudinary.com/dbpbx7tw4/image/upload/v1691954078/icons8-settings-64_1_jhfgvy.png"
+
+          alt="generater"
+          className="  h-7 w-7 animate-spin-slow "
+        />
+     
+        </div>
             </button>
           </div>
 
 
 
           <div className="flex  md:gap-3 gap-1  mt-5">
+         
             <div className=" w-1/2">
               <button onClick={handlePasswordModalToggle}  className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
                 SAVE PASSWORD
               </button>
             </div>
 
-            <div className="w-1/2">
+            <div className="w-1/2 ">
+           
               <button onClick={handleClick} className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
                  SHOW PASSWORD
               </button>

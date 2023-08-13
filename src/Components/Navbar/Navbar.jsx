@@ -58,17 +58,17 @@ function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 
 
-                
+
 
                 <div className="flex flex-shrink-0 justify-center items-center">
-                <span className="font-bold text-4xl text-teal-700 font-Poppins">S</span>
-                <span className="text-2xl font-medium text-black">AFE LOCK</span>
-                <img
-                  className="h-10 w-auto ml-2"
-                  src="https://res.cloudinary.com/dbpbx7tw4/image/upload/v1691755152/hacker_sjwxdo.png"
-                  alt=""
-                />
-              </div>
+                  <span className="font-bold text-4xl text-teal-700 font-Poppins">S</span>
+                  <span className="text-2xl font-medium text-black">AFE LOCK</span>
+                  <img
+                    className="h-10 w-auto ml-2"
+                    src="https://res.cloudinary.com/dbpbx7tw4/image/upload/v1691755152/hacker_sjwxdo.png"
+                    alt=""
+                  />
+                </div>
               </div>
 
 
@@ -76,32 +76,32 @@ function Navbar() {
 
 
               <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    <div className="flex space-x-8 md:ml-64">
-                      <Link to="/">
-                        <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
-                        > HOME PAGE </span>
-                      </Link>
-                    </div>
+                <div className="flex space-x-4">
+                  <div className="flex space-x-8 md:ml-64">
+                    <Link to="/">
+                      <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
+                      > HOME PAGE </span>
+                    </Link>
                   </div>
                 </div>
+              </div>
 
 
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className="header_top_right flex items-center justify-end gap-3">
                   {user ? (
                     <>
-                     
 
-<span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold md:flex items-center gap-1 ms-3 uppercase hidden"
-                        >    {user.name || user?.user?.name} </span>
-                       
+
+                      <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold md:flex items-center gap-1 ms-3 uppercase hidden"
+                      >    {user.name || user?.user?.name} </span>
+
 
                     </>
                   ) : (
                     <>
                       <Link to="/login" className="flex items-center gap-2">
-                      <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
+                        <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold hidden"
                         > LOGIN </span>                      </Link>
                     </>
                   )}
@@ -130,7 +130,7 @@ function Navbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                   
+
 
                       <Menu.Item>
                         {({ active }) => (
@@ -144,19 +144,37 @@ function Navbar() {
                                 )}
                               >
                                 <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
-                        >   SIGN OUT </span>
+                                >   SIGN OUT </span>
                               </span>
                             ) : (
+                              <div> 
+                              <div>
+                              <Link
+                                to="/login"
+                                className="block px-3 py-2 text-base text-black hover:bg-gray-100"
+                              >
+
+                                <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
+                                >   LOGIN </span>
+
+                              </Link>
+                              </div>
+
+
+                              <div>
                               <Link
                                 to="/signup"
                                 className="block px-3 py-2 text-base text-black hover:bg-gray-100"
                               >
-                               
+
                                 <span className="hover:text-gray-800 text-teal-700 duration-500 text-xl font-Lexend font-bold"
-                        >   SIGN UP </span>
+                                >   SIGN UP </span>
 
-
+                           
                               </Link>
+                              </div>
+
+                              </div>
                             )}
                           </>
                         )}

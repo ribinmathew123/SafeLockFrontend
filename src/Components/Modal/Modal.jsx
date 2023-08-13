@@ -11,15 +11,15 @@ const SavePasswordModal = ({ closeModal, onSave,password }) => {
 
   return (
    
-            <div className="modal-content font-semibold shadow-xl bg-teal-900 rounded-lg shadow-black text-black/70 p-10 mx-auto my-16 max-w-md">
+            <div className="modal-content font-semibold shadow-xl bg-teal-900 rounded-lg shadow-black text-black/70 p-5 md:p-10 mx-auto my-16 max-w-md">
 
       <form onSubmit={handleSubmit}>
 
 
 
-        <div className='flex gap-5'> 
+        <div className='flex gap-5 mt-3'> 
 
-        <label className='text-white text-lg'>
+        <label className='text-white md:text-lg text-sm'>
           Password Title :
         
         </label>
@@ -33,7 +33,7 @@ const SavePasswordModal = ({ closeModal, onSave,password }) => {
             </div>
             <div className='flex gap-14 mt-8'> 
 
-        <label className='text-white text-lg'>
+        <label className='text-white md:text-lg text-sm'>
           Password :
         
         </label>
@@ -49,7 +49,7 @@ const SavePasswordModal = ({ closeModal, onSave,password }) => {
           
             
 
-        <div className='mt-20  flex justify-around'>
+        <div className='mt-10 md:20  flex justify-around'>
 
         <button
           className="bg-teal-700 text-white px-4 font-bold py-2 rounded hover:bg-teal-500"
