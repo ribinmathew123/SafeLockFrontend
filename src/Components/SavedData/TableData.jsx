@@ -8,12 +8,14 @@ import Navbar from "../Navbar/Navbar";
 
 function TableData() {
   const [passwordData, setPasswordData] = useState();
+  const [isLoading, setLoading] = useState(false)
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-
+setLoading(true)
         const user = JSON.parse(localStorage.getItem("userInfo"));
         const token = user?.token;
         const userId=user?._id
@@ -26,6 +28,7 @@ function TableData() {
         const response = await server.get(`/api/v1/save/${userId}`, config);
         setPasswordData(response.data);
         console.log(response.data);
+        setLoading(false)
       } catch (error) {
         console.error(error);
       }
@@ -157,7 +160,9 @@ createTheme('solarized', {
         <p className="p-5  tracking-widest text-2xl text-teal-900 font-bold  text-center">
            SAVED PASSWORDS
         </p>
-
+        {isLoading ? (
+        <p className="my-8 font-semibold text-center">Loading...</p>
+      ) : (
         <div className="table-responsive">
   <DataTable
     className={`min-w-max`}
@@ -183,6 +188,8 @@ createTheme('solarized', {
 
 
         </div>
+              )}
+
         
         <div
           onClick={() => navigate("/")}

@@ -4,10 +4,14 @@ import  { useState } from 'react';
 const SavePasswordModal = ({ closeModal, onSave,password }) => {
   const [passwordName, setPasswordName] = useState('');
 
+  const [isloading,setIsloading]=useState(false)
+
   const handleSubmit = (event) => {
+    setIsloading(false)
     event.preventDefault();
     onSave(passwordName);
   };
+  setIsloading(true)
 
   return (
    
@@ -62,7 +66,7 @@ const SavePasswordModal = ({ closeModal, onSave,password }) => {
           className="bg-teal-700 text-white font-bold px-4 py-2 rounded hover:bg-teal-500"
           type='submit'
         >
-          SAVE
+        {isloading ? 'SAVING...' : 'SAVE'} 
         </button>
 
         </div>

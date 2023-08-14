@@ -271,7 +271,7 @@ function PasswordGenerator() {
             <div className="w-1/2 ">
            
               <button onClick={handleClick} className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
-                              {loading ? 'Loading...' : 'Show password'}
+                              {loading ? 'Loading...' : 'SHOW PASSWORD'}
 
               </button>
             </div>
