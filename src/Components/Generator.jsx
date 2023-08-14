@@ -15,6 +15,9 @@ function PasswordGenerator() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   const [number, setNumber] = useState(false);
+  const [loading,setLoading]=useState(false)
+  const [isloading,setIsloading]=useState(false)
+
 
   const [lowercase, setLowercase] = useState(false);
   const [uppercase, setUppercase] = useState(false);
@@ -47,6 +50,7 @@ function PasswordGenerator() {
 
   const handleSave = async (passwordName) => {
     try {
+      setIsloading(true)
       const token = user?.token;
       const userId = user?._id;
 
@@ -70,6 +74,7 @@ function PasswordGenerator() {
         toast.success("Password Saved!");
         handlePasswordModalToggle(); 
       }
+      setIsloading(false)
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         toast.error(error.response.data.error);
@@ -87,6 +92,7 @@ function PasswordGenerator() {
 
 
   const handleClick = () => {
+    setLoading(true)
   
     if (!user) {
       // Swal.fire({
@@ -99,6 +105,7 @@ function PasswordGenerator() {
     } else {
       navigate('/saved');
     }
+    setLoading(false)
   };
   
 
@@ -123,10 +130,12 @@ function PasswordGenerator() {
   };
 
   const handilGenerate = () => {
+    // setLoading(true)
     setPassword(
       generatePassword(value, number, lowercase, uppercase, symbol)
     );
   };
+  // setLoading(false)
 
   const handleCopy = () => {
     Copy(password);
@@ -237,7 +246,7 @@ function PasswordGenerator() {
              <div className="flex justify-center gap-2">
              <p className="font-serif text-xl">
 
-GENERATE PASSWORD
+                 GENERATE PASSWORD
 </p>
             <img
           src="https://res.cloudinary.com/dbpbx7tw4/image/upload/v1691954078/icons8-settings-64_1_jhfgvy.png"
@@ -251,19 +260,19 @@ GENERATE PASSWORD
           </div>
 
 
-
           <div className="flex  md:gap-3 gap-1  mt-5">
          
             <div className=" w-1/2">
               <button onClick={handlePasswordModalToggle}  className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
-                SAVE PASSWORD
+                {isloading? 'Saving...':'SAVE PASSWORD'}
               </button>
             </div>
 
             <div className="w-1/2 ">
            
               <button onClick={handleClick} className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
-                 SHOW PASSWORD
+                              {loading ? 'Loading...' : 'Show password'}
+
               </button>
             </div>
           </div>
