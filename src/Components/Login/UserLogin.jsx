@@ -2,18 +2,21 @@ import { Link, useNavigate } from "react-router-dom";
 import server from "../../Axios/axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 function UserLogin() {
 
   const navigate = useNavigate(); // Create a navigate function
 
+  const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm()
 
 
   const onSubmit = async (data) => {
     try {
-   
+      setIsLoading(true); 
+
       const response = await server.post("/api/v1/user-login", data); 
 
       if(response.data) {
@@ -21,6 +24,8 @@ function UserLogin() {
         toast.success("Login success!.")
         navigate('/')
     }
+    setIsLoading(false); 
+
     return response.data
     
     } catch (error) {
@@ -50,6 +55,7 @@ function UserLogin() {
             className="hidden lg:block w-64 hover:scale-125 transition-all duration-500 transform mx-auto"
             style={{ zIndex: 1000 }}
           />
+
           </p>
           <Link to="/signup">
           <p className="flex flex-col items-center justify-center mt-10 text-center">
@@ -102,7 +108,8 @@ function UserLogin() {
                 type="submit"
                 className="w-full px-4 py-2 text-lg font-semibold mt-3 text-white transition-colors duration-300 bg-teal-700 rounded-md shadow hover:bg-teal-600 focus:outline-none focus:ring-blue-200 focus:ring-4"
               >
-                Log in
+                        {isLoading ? 'Loading...' : 'LOGIN'}
+
               </button>
             </div>
             <div className="flex flex-col space-y-5">

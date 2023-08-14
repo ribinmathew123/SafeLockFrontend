@@ -8,6 +8,7 @@ import { toast, Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 function UserSignup() {
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -20,7 +21,8 @@ function UserSignup() {
 
       const onSubmit = async (data) => {
         try {
-       
+          setIsLoading(true); 
+
           
           const response = await server.post("/api/v1/user-signup", data); 
           if(response.data) {
@@ -28,6 +30,8 @@ function UserSignup() {
             toast.success("Registration success!.")
             navigate('/')
         }
+        setIsLoading(false); 
+
         return response.data
         } catch (error) {
            console.log("error is ",error)
@@ -105,33 +109,6 @@ function UserSignup() {
               {errors.email && <p className=' text-[#ff0000] errorMessage'>{errors.email?.message}</p>}
 
 
-
-
-              {/* <div className="flex flex-col space-y-1">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="text-sm font-semibold text-gray-500">Password</label>
-                </div>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  name="password"
-                  className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-teal-400"
-                  {...register("password", { required: "Please Enter Password", minLength: { value: 5, message: "Password must be 8 characters" } })}
-                />
-              </div>
-              <div
-              className="absolute  flex items-center inset-y-0  cursor-pointer  "
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <HiEyeOff /> : <HiEye />}
-            </div>
-
-
-            {errors.password && <p className='errorMessage text-[#ff0000]'>{errors.password?.message}</p>} */}
-
-
-
-
 <div className="flex flex-col space-y-1 relative">
     <label htmlFor="password" className="text-sm font-semibold text-gray-500">Password</label>
   <div className="flex items-center justify-between">
@@ -174,7 +151,7 @@ function UserSignup() {
 
                   className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-teal-700 rounded-md shadow hover:bg-teal-600 focus:outline-none focus:ring-blue-200 focus:ring-4"
                 >
-                  SIGN UP
+               {isLoading ? 'Loading...' : 'SIGN UP'}
                 </button>
               </div>
               <div className="flex flex-col space-y-5">
