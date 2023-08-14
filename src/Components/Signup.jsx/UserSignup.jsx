@@ -36,7 +36,8 @@ function UserSignup() {
         } catch (error) {
            console.log("error is ",error)
           toast.error(error.response.data.error);
-          
+          setIsLoading(false); 
+
         }
       };
 
