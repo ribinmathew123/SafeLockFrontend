@@ -16,7 +16,7 @@ function PasswordGenerator() {
 
   const [number, setNumber] = useState(false);
   const [loading,setLoading]=useState(false)
-  const [isloading,setIsloading]=useState(false)
+
 
 
   const [lowercase, setLowercase] = useState(false);
@@ -50,7 +50,6 @@ function PasswordGenerator() {
 
   const handleSave = async (passwordName) => {
     try {
-      setIsloading(true)
       const token = user?.token;
       const userId = user?._id;
 
@@ -74,8 +73,10 @@ function PasswordGenerator() {
         toast.success("Password Saved!");
         handlePasswordModalToggle(); 
       }
-      setIsloading(false)
+      
     } catch (error) {
+    
+
       if (error.response && error.response.data && error.response.data.error) {
         toast.error(error.response.data.error);
       } else {
@@ -264,7 +265,7 @@ function PasswordGenerator() {
          
             <div className=" w-1/2">
               <button onClick={handlePasswordModalToggle}  className="w-full py-4 px-4 bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-md shadow-md text-sm">
-                {isloading? 'Saving...':'SAVE PASSWORD'}
+                SAVE PASSWORD
               </button>
             </div>
 
