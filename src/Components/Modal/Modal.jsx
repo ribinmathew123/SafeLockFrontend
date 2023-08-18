@@ -45,10 +45,7 @@ const SavePasswordModal = ({ closeModal, onSave,password }) => {
             value={password}
             />
             </div>
-            
-            
-          
-            
+              
 
         <div className='mt-10 md:20  flex justify-around'>
 

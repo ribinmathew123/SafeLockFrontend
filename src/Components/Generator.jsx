@@ -22,7 +22,7 @@ function PasswordGenerator() {
   const [lowercase, setLowercase] = useState(false);
   const [uppercase, setUppercase] = useState(false);
   const [symbol, setSymbol] = useState(false);
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(5);
   const [password, setPassword] = useState(null);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
 
@@ -33,7 +33,7 @@ function PasswordGenerator() {
 
   const handlePasswordModalToggle = () => {
     if (!password) {
-      toast.error("Please generate a password first.");
+      toast.error("Please generate a password.");
       return; 
     }
 
@@ -131,12 +131,16 @@ function PasswordGenerator() {
   };
 
   const handilGenerate = () => {
-    // setLoading(true)
+    if(!number && !lowercase && !uppercase && !symbol )
+    {
+      toast.error("Please Select any field");
+     
+    }
+
     setPassword(
       generatePassword(value, number, lowercase, uppercase, symbol)
     );
   };
-  // setLoading(false)
 
   const handleCopy = () => {
     Copy(password);
@@ -179,7 +183,7 @@ function PasswordGenerator() {
             type="range"
 
             value={value}
-            min={1}
+            min={5}
             max={20}
             onChange={handleChange}
 
